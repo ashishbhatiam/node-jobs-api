@@ -16,10 +16,15 @@ const login = async (req, res) => {
     throw new BadRequestError('Please provide email and password')
   }
   const user = await User.findOne({ email })
-  console.log('user: ', user)
   if (!user) {
     throw new NotFoundError('You are not registered with us. Please sign up.')
   }
+
+  const isPasswordCorrect = await user.comparePassword(password)
+  if (!isPasswordCorrect) {
+    throw new NotFoundError('You are not registered with us. Please sign up.')
+  }
+
   const token = user.createJwt()
   res.status(StatusCodes.OK).json({ user: { name: user.name }, token })
 }
