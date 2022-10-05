@@ -12,7 +12,7 @@ const authenticationMiddleware = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
     req.user = {
-      id: decoded.id,
+      userId: decoded.userId,
       name: decoded.name
     }
     next()
