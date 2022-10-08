@@ -1,6 +1,6 @@
 # Node Jobs-API
 
-    Jobs API using MongoDB
+    Jobs API using NodeJS, ExpressJS & MongoDB
 
 - View **live demo** here: [ab-jobs-api.herokuapp.com/docs](https://ab-jobs-api.herokuapp.com/docs/)
 
