@@ -40,7 +40,7 @@ app.use(express.json())
 // extra packages
 
 // Load Swagger
-app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
 
 // routes
 app.use('/api/v1/auth', authRouter)
