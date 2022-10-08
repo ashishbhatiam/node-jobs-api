@@ -10,6 +10,11 @@ const cors = require('cors')
 const xssClean = require('xss-clean')
 const rateLimiter = require('express-rate-limit')
 
+// Swagger
+const swaggerUI = require('swagger-ui-express')
+const YAML = require('yamljs')
+const swaggerDoc = YAML.load('./swagger.yaml')
+
 // error handler
 const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
@@ -34,6 +39,9 @@ app.use(xssClean())
 app.use(express.json())
 // extra packages
 
+// Load Swagger
+app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
+
 // routes
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/jobs', authenticationMiddleware, jobsRouter)
@@ -46,9 +54,7 @@ const port = process.env.PORT || 5001
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI)
-    app.listen(port, () =>
-      console.log(`Server is listening on http://localhost:${port}/...`)
-    )
+    app.listen(port, () => console.log(`Server is listening on PORT: ${port}`))
   } catch (error) {
     console.log(error)
   }
