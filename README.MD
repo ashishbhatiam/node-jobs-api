@@ -2,7 +2,7 @@
 
     Jobs API using NodeJS, ExpressJS & MongoDB
 
-- View **live demo** here: [ab-jobs-api.herokuapp.com/docs](https://ab-jobs-api.herokuapp.com/docs/)
+- View **live demo** here: [jobs-api-g0fe.onrender.com/docs](https://jobs-api-g0fe.onrender.com/docs/)
 
 ## Project Setup
 
