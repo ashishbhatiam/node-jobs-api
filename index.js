@@ -26,6 +26,8 @@ const connectDB = require('./db/connect')
 // routers
 const authRouter = require('./routes/auth')
 const jobsRouter = require('./routes/jobs')
+const CSS_URL =
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 
 app.set('trust proxy', 1)
 app.use(
@@ -43,8 +45,7 @@ app.use(express.json())
 // extra packages
 
 // Load Swagger
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
-
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument, { customCssUrl: CSS_URL }))
 // routes
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/jobs', authenticationMiddleware, jobsRouter)
