@@ -4,8 +4,10 @@ info:
   contact: {}
   version: '1.0'
 servers:
-- url: https://jobs-api-g0fe.onrender.com/api/v1
-  variables: {}
+  - url: https://jobs-api-g0fe.onrender.com/api/v1
+    variables: {}
+  - url: https://node-jobs-api-liard.vercel.app/api/v1
+    variables: {}
 paths:
   /auth/register:
     post:
