@@ -10,10 +10,10 @@ const cors = require('cors')
 const xssClean = require('xss-clean')
 const rateLimiter = require('express-rate-limit')
 
-// Swagger
-const swaggerUI = require('swagger-ui-express')
-const YAML = require('yamljs')
-const swaggerDoc = YAML.load('./swagger.yaml')
+const path = require('path');
+const yaml = require('yamljs');
+const swaggerDocument = yaml.load(path.join(__dirname, 'swagger.yaml')); 
+
 
 // error handler
 const notFoundMiddleware = require('./middleware/not-found')
@@ -42,7 +42,7 @@ app.use(express.json())
 // extra packages
 
 // Load Swagger
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 // routes
 app.use('/api/v1/auth', authRouter)
