@@ -8,7 +8,7 @@ const authenticationMiddleware = require('./middleware/authentication')
 const helmet = require('helmet')
 const cors = require('cors')
 const xssClean = require('xss-clean')
-const rateLimiter = require('express-rate-limit')
+// const rateLimiter = require('express-rate-limit')
 // Swagger
 const swaggerUI = require('swagger-ui-express')
 const path = require('path');
@@ -30,12 +30,12 @@ const CSS_URL =
   "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 
 app.set('trust proxy', 1)
-app.use(
-  rateLimiter({
-    windowMs: 15 * 60 * 1000,
-    max: 100
-  })
-)
+// app.use(
+//   rateLimiter({
+//     windowMs: 15 * 60 * 1000,
+//     max: 100
+//   })
+// )
 app.use(helmet())
 app.use(cors({
     origin: '*'
